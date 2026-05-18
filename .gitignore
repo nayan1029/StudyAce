@@ -1,0 +1,17 @@
+# Java
+/target/
+*.log
+*.jar
+
+# Node
+/frontend/node_modules/
+/frontend/dist/
+/node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store

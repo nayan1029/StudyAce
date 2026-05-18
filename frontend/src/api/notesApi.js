@@ -1,3 +1,16 @@
-// Placeholder notes API
-export async function uploadNotes() { throw new Error('Not implemented') }
-export async function getNotes() { throw new Error('Not implemented') }
+import api from '../services/http'
+
+export const notesApi = {
+	create: async (payload) => {
+		const { data } = await api.post('/notes', payload)
+		return data
+	},
+	getAll: async () => {
+		const { data } = await api.get('/notes')
+		return data
+	},
+	summarize: async (payload) => {
+		const { data } = await api.post('/ai/summarize', payload)
+		return data
+	},
+}

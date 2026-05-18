@@ -1,2 +1,8 @@
-// Placeholder dashboard API
-export async function fetchDashboard() { throw new Error('Not implemented') }
+import api from '../services/http'
+
+export const dashboardApi = {
+	fetchDashboard: async () => {
+		const { data } = await api.get('/analytics/dashboard')
+		return data
+	},
+}
