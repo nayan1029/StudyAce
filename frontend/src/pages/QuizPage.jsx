@@ -26,8 +26,18 @@ export default function QuizPage() {
       </Card>
       {mutation.data?.questions && (
         <Card title="Generated Questions">
-          <ol className="list-decimal pl-5 space-y-2">
-            {mutation.data.questions.map((question, index) => <li key={index}>{question}</li>)}
+          <ol className="list-decimal pl-5 space-y-4">
+            {mutation.data.questions.map((question, index) => (
+              <li key={question.question || index}>
+                <p className="font-medium">{question.question || question}</p>
+                {question.options?.length > 0 && (
+                  <ul className="mt-2 grid sm:grid-cols-2 gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    {question.options.map((option) => <li key={option} className="rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-2">{option}</li>)}
+                  </ul>
+                )}
+                {question.answer && <p className="mt-2 text-sm text-indigo-600 dark:text-indigo-300">Answer: {question.answer}</p>}
+              </li>
+            ))}
           </ol>
         </Card>
       )}

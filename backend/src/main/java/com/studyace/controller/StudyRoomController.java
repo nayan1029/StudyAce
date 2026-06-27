@@ -20,8 +20,9 @@ public class StudyRoomController {
     @GetMapping
     public List<Map<String, Object>> rooms() {
         return List.of(
-                Map.of("id", 1, "name", "DSA Sprint", "members", 12, "status", "LIVE"),
-                Map.of("id", 2, "name", "DBMS Review", "members", 8, "status", "SCHEDULED")
+                Map.of("id", 1, "name", "DSA Night Sprint", "members", 12, "status", "LIVE", "topic", "Stacks, queues, and recursion"),
+                Map.of("id", 2, "name", "DBMS Revision Pod", "members", 8, "status", "SCHEDULED", "topic", "Normalization and SQL joins"),
+                Map.of("id", 3, "name", "Aptitude Challenge", "members", 15, "status", "LIVE", "topic", "Placement speed practice")
         );
     }
 

@@ -1,33 +1,30 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { useMutation } from '@tanstack/react-query'
 import Input from '../components/common/Input'
 import Button from '../components/common/Button'
 import { authApi } from '../api/authApi'
-import { setCredentials } from '../features/auth/authSlice'
+import { sessionService } from '../services/session'
 
 export default function RegisterPage() {
   const [form, setForm] = useState({ name: '', email: '', password: '' })
   const [error, setError] = useState('')
-  const dispatch = useDispatch()
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const navigate = useNavigate()
 
-  const mutation = useMutation({
-    mutationFn: authApi.register,
-    onSuccess: (data) => {
-      dispatch(setCredentials({ user: data.user, token: data.token }))
-      navigate('/dashboard')
-    },
-    onError: (err) => {
-      setError(err.response?.data?.message || 'Registration failed')
-    },
-  })
-
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault()
     setError('')
-    mutation.mutate(form)
+    setIsSubmitting(true)
+
+    try {
+      const data = await authApi.register(form)
+      sessionService.saveSession(data.user, data.token)
+      navigate('/dashboard')
+    } catch (err) {
+      setError(err.response?.data?.message || 'Registration failed')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -38,7 +35,7 @@ export default function RegisterPage() {
         <Input label="Email" type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
         <Input label="Password" type="password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required />
         {error && <p className="text-sm text-red-600">{error}</p>}
-        <Button type="submit" className="w-full" disabled={mutation.isPending}>{mutation.isPending ? 'Creating...' : 'Register'}</Button>
+        <Button type="submit" className="w-full" disabled={isSubmitting}>{isSubmitting ? 'Creating...' : 'Register'}</Button>
         <p className="text-sm text-gray-600 dark:text-gray-300">Already have account? <Link className="text-indigo-600" to="/login">Sign in</Link></p>
       </form>
     </div>

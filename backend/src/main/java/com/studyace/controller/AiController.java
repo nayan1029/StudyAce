@@ -28,7 +28,7 @@ public class AiController {
 
     @PostMapping("/assistant")
     public Map<String, Object> assistant(@RequestBody SummaryRequest request) {
-        return Map.of("answer", "AI assistant response for: " + request.getText());
+        return aiService.answerQuestion(request.getText());
     }
 
     @PostMapping("/quiz")

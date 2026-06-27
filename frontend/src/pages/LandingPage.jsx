@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 
 export default function LandingPage() {
   return (
@@ -18,19 +17,15 @@ export default function LandingPage() {
             <Link className="px-5 py-3 rounded-lg border border-gray-300 dark:border-gray-700" to="/login">Login</Link>
           </div>
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-6 border border-gray-100 dark:border-gray-800"
-        >
+        <div className="landing-card bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-6 border border-gray-100 dark:border-gray-800">
           <h3 className="font-semibold mb-3">What you get</h3>
           <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-            <li>• AI Notes Summarizer</li>
-            <li>• Quiz Generator with difficulty levels</li>
-            <li>• Smart timetable and task manager</li>
-            <li>• Study rooms and profile analytics</li>
+            <li>AI Notes Summarizer</li>
+            <li>Quiz Generator with difficulty levels</li>
+            <li>Smart timetable and task manager</li>
+            <li>Study rooms and profile analytics</li>
           </ul>
-        </motion.div>
+        </div>
       </div>
     </div>
   )

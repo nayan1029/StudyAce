@@ -1,22 +1,13 @@
 import React, { useState } from 'react'
+import { useMutation } from '@tanstack/react-query'
 import Card from '../components/common/Card'
 import Button from '../components/common/Button'
+import { aiApi } from '../api/aiApi'
 
 export default function ResumeAnalyzerPage() {
   const [resumeText, setResumeText] = useState('')
-  const [result, setResult] = useState(null)
-
-  const analyzeResume = () => {
-    const score = Math.min(95, Math.max(58, Math.floor(resumeText.length / 18)))
-    setResult({
-      score,
-      suggestions: [
-        'Add quantified achievements in projects.',
-        'Include ATS keywords: React, Spring Boot, SQL, REST API.',
-        'Keep resume summary under 3 lines.',
-      ],
-    })
-  }
+  const mutation = useMutation({ mutationFn: aiApi.analyzeResume })
+  const result = mutation.data
 
   return (
     <div className="space-y-6">
@@ -29,7 +20,9 @@ export default function ResumeAnalyzerPage() {
           placeholder="Paste resume text for analysis"
         />
         <div className="mt-3">
-          <Button onClick={analyzeResume} disabled={!resumeText.trim()}>Analyze Resume</Button>
+          <Button onClick={() => mutation.mutate({ text: resumeText })} disabled={mutation.isPending || !resumeText.trim()}>
+            {mutation.isPending ? 'Analyzing...' : 'Analyze Resume'}
+          </Button>
         </div>
       </Card>
       {result && (

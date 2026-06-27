@@ -1,8 +1,8 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { sessionService } from '../services/session'
 
 export default function ProtectedRoute({ children }) {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+  const isAuthenticated = sessionService.isAuthenticated()
   return isAuthenticated ? children : <Navigate to="/login" replace />
 }

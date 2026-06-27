@@ -1,9 +1,9 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import Card from '../components/common/Card'
+import { sessionService } from '../services/session'
 
 export default function ProfilePage() {
-  const user = useSelector((state) => state.auth.user)
+  const user = sessionService.getUser()
 
   return (
     <div className="space-y-6">

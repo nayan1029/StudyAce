@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { logout } from '../features/auth/authSlice'
+import { sessionService } from '../services/session'
 import ThemeToggle from '../components/common/ThemeToggle'
 
 const navItems = [
   { to: '/dashboard', label: 'Dashboard' },
   { to: '/notes', label: 'Notes' },
   { to: '/summarizer', label: 'Summarizer' },
+  { to: '/assistant', label: 'Assistant' },
   { to: '/quiz', label: 'Quiz' },
   { to: '/tasks', label: 'Tasks' },
   { to: '/timetable', label: 'Timetable' },
@@ -17,12 +17,11 @@ const navItems = [
 ]
 
 export default function MainLayout() {
-  const { user } = useSelector((state) => state.auth)
-  const dispatch = useDispatch()
   const navigate = useNavigate()
+  const user = sessionService.getUser()
 
   const onLogout = () => {
-    dispatch(logout())
+    sessionService.clearSession()
     navigate('/login')
   }
 
@@ -60,7 +59,7 @@ export default function MainLayout() {
         <Outlet />
       </main>
       <footer className="border-t border-gray-200 dark:border-gray-800 py-4 text-center text-xs text-gray-500">
-        StudyAce © {new Date().getFullYear()} — AI productivity for students
+        StudyAce {new Date().getFullYear()} - AI productivity for students
       </footer>
     </div>
   )
