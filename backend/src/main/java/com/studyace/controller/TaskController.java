@@ -25,4 +25,9 @@ public class TaskController {
     public List<TaskResponse> getAll(Authentication auth) {
         return taskService.getAll(auth.getName());
     }
+
+    @PatchMapping("/{id}/toggle")
+    public TaskResponse toggle(Authentication auth, @PathVariable Long id) {
+        return taskService.toggleComplete(auth.getName(), id);
+    }
 }

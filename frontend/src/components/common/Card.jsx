@@ -1,9 +1,25 @@
 import React from 'react'
 
-export default function Card({ title, children, className = '' }) {
+export default function Card({ title, subtitle, action, children, className = '' }) {
   return (
-    <div className={`bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 p-5 ${className}`}>
-      {title && <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100 mb-3">{title}</h3>}
+    <div
+      className={`card-surface p-6 ${className}`}
+    >
+      {(title || action) && (
+        <div className="mb-4 flex items-start justify-between gap-3">
+          <div>
+            {title && (
+              <h3 className="text-base font-semibold text-slate-900 dark:text-slate-100">
+                {title}
+              </h3>
+            )}
+            {subtitle && (
+              <p className="mt-0.5 text-sm text-slate-500 dark:text-slate-400">{subtitle}</p>
+            )}
+          </div>
+          {action}
+        </div>
+      )}
       {children}
     </div>
   )

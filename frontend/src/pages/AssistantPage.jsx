@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import Card from '../components/common/Card'
 import Button from '../components/common/Button'
+import PageHeader from '../components/common/PageHeader'
 import { aiApi } from '../api/aiApi'
 
 const QUICK_PROMPTS = [
@@ -42,10 +43,7 @@ export default function AssistantPage() {
       return
     }
 
-    const conversation = [
-      ...messages,
-      createMessage('user', trimmedQuestion),
-    ]
+    const conversation = [...messages, createMessage('user', trimmedQuestion)]
 
     setMessages(conversation)
     setQuestion('')
@@ -81,10 +79,6 @@ export default function AssistantPage() {
     sendQuestion(question)
   }
 
-  const handleQuickPrompt = (prompt) => {
-    setQuestion(prompt)
-  }
-
   const handleKeyDown = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault()
@@ -94,17 +88,15 @@ export default function AssistantPage() {
 
   return (
     <div className="space-y-6">
-      <div className="space-y-2">
-        <h1 className="text-2xl font-semibold">AI Study Assistant</h1>
-        <p className="text-sm text-gray-600 dark:text-gray-300">
-          Chat naturally, ask follow-up questions, and keep the conversation focused on your study goal.
-        </p>
-      </div>
+      <PageHeader
+        title="AI Study Assistant"
+        subtitle="Chat naturally and keep the conversation focused on your study goal."
+      />
 
       <div className="grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)]">
         <Card title="Quick prompts" className="h-fit">
-          <div className="space-y-3">
-            <p className="text-sm text-gray-600 dark:text-gray-300">
+          <div className="space-y-4">
+            <p className="text-sm text-slate-600 dark:text-slate-300">
               Start with one of these, or type your own question below.
             </p>
             <div className="flex flex-wrap gap-2">
@@ -112,18 +104,19 @@ export default function AssistantPage() {
                 <button
                   key={prompt}
                   type="button"
-                  onClick={() => handleQuickPrompt(prompt)}
-                  className="rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-3 py-2 text-left text-xs text-gray-700 dark:text-gray-200 hover:border-indigo-300 hover:text-indigo-600 transition"
+                  onClick={() => setQuestion(prompt)}
+                  className="rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-left text-xs text-slate-700 transition hover:border-brand-300 hover:text-brand-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
                 >
                   {prompt}
                 </button>
               ))}
             </div>
 
-            <div className="rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/60 p-4 text-sm text-indigo-900 dark:text-indigo-100">
-              <p className="font-semibold mb-1">How it works</p>
+            <div className="rounded-xl border border-brand-100 bg-brand-50 p-4 text-sm text-brand-900 dark:border-brand-900/60 dark:bg-brand-950/30 dark:text-brand-100">
+              <p className="mb-1 font-semibold">How it works</p>
               <p>
-                The assistant gives a short explanation and revision steps, so you can keep asking follow-up questions like a real tutor chat.
+                The assistant gives a short explanation and revision steps, so you can keep asking
+                follow-up questions like a real tutor chat.
               </p>
             </div>
           </div>
@@ -139,16 +132,18 @@ export default function AssistantPage() {
                 <div
                   className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm shadow-sm ${
                     message.role === 'user'
-                      ? 'bg-indigo-600 text-white rounded-br-md'
-                      : 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100 rounded-bl-md'
+                      ? 'rounded-br-md bg-brand-gradient text-white'
+                      : 'rounded-bl-md bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-100'
                   }`}
                 >
                   <p className="whitespace-pre-wrap leading-6">{message.content}</p>
 
                   {message.role === 'assistant' && message.nextSteps?.length > 0 && (
-                    <div className="mt-3 border-t border-white/10 pt-3">
-                      <p className="text-xs font-semibold uppercase tracking-wide opacity-80">Next steps</p>
-                      <ul className="mt-2 space-y-1 text-sm list-disc pl-5">
+                    <div className="mt-3 border-t border-slate-200 pt-3 dark:border-slate-700">
+                      <p className="text-xs font-semibold uppercase tracking-wide opacity-80">
+                        Next steps
+                      </p>
+                      <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
                         {message.nextSteps.map((step) => (
                           <li key={step}>{step}</li>
                         ))}
@@ -161,7 +156,7 @@ export default function AssistantPage() {
 
             {mutation.isPending && (
               <div className="flex justify-start">
-                <div className="rounded-2xl rounded-bl-md bg-gray-100 dark:bg-gray-800 px-4 py-3 text-sm text-gray-600 dark:text-gray-300">
+                <div className="rounded-2xl rounded-bl-md bg-slate-100 px-4 py-3 text-sm text-slate-600 dark:bg-slate-800 dark:text-slate-300">
                   Thinking...
                 </div>
               </div>
@@ -170,21 +165,15 @@ export default function AssistantPage() {
             <div ref={messagesEndRef} />
           </div>
 
-          <form onSubmit={handleSubmit} className="mt-4 border-t border-gray-200 dark:border-gray-800 pt-4">
-            <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-200">
-              Ask your next study question
-            </label>
+          <form onSubmit={handleSubmit} className="mt-4 border-t border-slate-200 pt-4 dark:border-slate-800">
             <textarea
-              className="w-full min-h-28 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+              className="field-input min-h-24 resize-y"
               value={question}
               onChange={(event) => setQuestion(event.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Type a topic, concept, or revision goal. Press Enter to send, Shift+Enter for a new line."
+              placeholder="Type a topic or question. Press Enter to send, Shift+Enter for a new line."
             />
-            <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                Keep the conversation going with follow-up questions for examples, summaries, or practice prompts.
-              </p>
+            <div className="mt-3 flex items-center justify-end">
               <Button type="submit" disabled={mutation.isPending || !question.trim()}>
                 {mutation.isPending ? 'Thinking...' : 'Send message'}
               </Button>

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.studyace.dto.AssistantRequest;
-import com.studyace.dto.QuizGenerateRequest;
 import com.studyace.dto.SummaryRequest;
 import com.studyace.service.AiService;
 
@@ -64,10 +63,5 @@ public class AiController {
         }
 
         return history;
-    }
-
-    @PostMapping("/quiz")
-    public Map<String, Object> generateQuiz(@RequestBody QuizGenerateRequest request) {
-        return aiService.generateQuiz(request.getTopic(), request.getDifficulty());
     }
 }

@@ -23,12 +23,14 @@ public class AnalyticsService {
                 .orElseThrow(() -> new ApiException("User not found"));
 
         long noteCount = noteRepository.findAllByUserOrderByCreatedAtDesc(user).size();
-        long taskCount = taskRepository.findAllByUserOrderByCreatedAtDesc(user).size();
+        long completedTasks = taskRepository.findAllByUserOrderByCreatedAtDesc(user).stream()
+                .filter(com.studyace.entity.Task::isCompleted)
+                .count();
 
         return Map.of(
                 "stats", Map.of(
                         "notesCount", noteCount,
-                        "completedTasks", 0,
+                        "completedTasks", completedTasks,
                         "quizAttempts", 0,
                         "focusHours", 0
                 )

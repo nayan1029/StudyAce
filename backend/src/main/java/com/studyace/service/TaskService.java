@@ -45,6 +45,21 @@ public class TaskService {
                 .toList();
     }
 
+    public TaskResponse toggleComplete(String email, Long taskId) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ApiException("User not found"));
+
+        Task task = taskRepository.findById(taskId)
+                .orElseThrow(() -> new ApiException("Task not found"));
+
+        if (!task.getUser().getId().equals(user.getId())) {
+            throw new ApiException("Task not found");
+        }
+
+        task.setCompleted(!task.isCompleted());
+        return toResponse(taskRepository.save(task));
+    }
+
     private TaskResponse toResponse(Task task) {
         return TaskResponse.builder()
                 .id(task.getId())

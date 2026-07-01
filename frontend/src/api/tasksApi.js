@@ -9,4 +9,8 @@ export const tasksApi = {
     const { data } = await api.post('/tasks', payload)
     return data
   },
+  toggle: async (id) => {
+    const { data } = await api.patch(`/tasks/${id}/toggle`)
+    return data
+  },
 }
