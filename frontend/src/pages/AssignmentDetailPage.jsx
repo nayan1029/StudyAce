@@ -56,14 +56,14 @@ export default function AssignmentDetailPage() {
         <p className="text-sm text-gray-500">
           Assignment not found. Open it from the class's Classwork tab instead of a direct link.
         </p>
-        <Link to="/classes" className="text-indigo-600 hover:underline text-sm">&larr; Back to My Classes</Link>
+        <Link to="/classes" className="text-red-600 hover:underline text-sm">&larr; Back to My Classes</Link>
       </div>
     )
   }
 
   return (
     <div className="space-y-6">
-      <Link to={`/classes/${resolved.classroomId}`} className="text-sm text-indigo-600 hover:underline">&larr; Back to class</Link>
+      <Link to={`/classes/${resolved.classroomId}`} className="text-sm text-red-600 hover:underline">&larr; Back to class</Link>
 
       <Card>
         <h1 className="text-xl font-semibold">{resolved.title}</h1>
@@ -95,7 +95,7 @@ export default function AssignmentDetailPage() {
               }}
             >
               <textarea
-                className="w-full min-h-32 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+                className="w-full min-h-32 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                 placeholder="Type your answer, or paste a link to your work..."
                 value={submissionDraft}
                 onChange={(e) => setSubmissionDraft(e.target.value)}

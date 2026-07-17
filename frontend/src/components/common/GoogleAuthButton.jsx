@@ -3,7 +3,7 @@ import { authApi } from '../../api/authApi'
 
 // Only meaningfully clickable once the backend has GOOGLE_CLIENT_ID configured —
 // otherwise Spring Security has no /oauth2/authorization/google route registered
-// and this will 404. See backend/src/main/java/com/studybuddy/config/OAuth2ClientConfig.java.
+// and this will 404. See backend/src/main/java/com/classedge/config/OAuth2ClientConfig.java.
 export default function GoogleAuthButton({ label = 'Continue with Google', redirectTo = '/dashboard' }) {
   return (
     <a

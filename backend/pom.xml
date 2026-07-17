@@ -13,10 +13,10 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.studybuddy</groupId>
-    <artifactId>studybuddy-backend</artifactId>
+    <groupId>com.classedge</groupId>
+    <artifactId>classedge-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>StudyBuddy</name>
+    <name>ClassEdge</name>
     <description>AI SaaS Platform for Students</description>
 
     <properties>
@@ -24,6 +24,7 @@
     </properties>
 
     <dependencies>
+    
 
         <!-- Spring Boot Web -->
         <dependency>
@@ -67,13 +68,8 @@
             <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
 
-        <!-- MySQL -->
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
-        </dependency>
 
+        
         <!-- PostgreSQL -->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -136,6 +132,8 @@
             <artifactId>mockito-core</artifactId>
             <scope>test</scope>
         </dependency>
+
+        
 
     </dependencies>
 

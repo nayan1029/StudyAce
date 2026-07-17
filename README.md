@@ -1,8 +1,8 @@
-# StudyBuddy
+# ClassEdge
 
-StudyBuddy is an AI-powered platform for college students covering study assistance, note summarization, quiz generation, task management, a personal timetable, collaborative study rooms, and resume analysis.
-
-This document describes what's actually implemented in this codebase, not an aspirational feature list.
+**ClassEdge | AI-Powered Learning Management System– React.js, Spring Boot, PostgreSQL, JWT, REST API**
+• Developed a full-stack learning management platform with role-based access for students, faculty, and administrators using React.js, Spring Boot, PostgreSQL, and JWT authentication.
+• Integrated Gemini APIs for AI-powered quiz generation, study assistance, and document summarization, along with Google OAuth2 authentication and Docker-based deployment.
 
 ---
 
@@ -98,7 +98,7 @@ FRONTEND_URL=http://localhost:5173
 ## Project structure
 
 ```
-StudyBuddy/
+ClassEdge/
 ├── frontend/    React + Vite SPA
 ├── backend/     Spring Boot REST + WebSocket API
 └── scripts/     local dev helper scripts
@@ -106,18 +106,16 @@ StudyBuddy/
 
 ## Deployment
 
-**Frontend (Vite + React):**
-```bash
-cd frontend
-npm install
-npm run build
-```
-Set `VITE_API_BASE_URL` to your deployed backend's API root (e.g. `https://api.example.com/api`) at build time.
+The project is fully containerized and deployment-ready via Docker Compose.
 
-**Backend (Spring Boot):**
 ```bash
-cd backend
-mvn -B -DskipTests package
-java -jar target/*.jar
+docker-compose up --build -d
 ```
-Configure a persistent database for production via `DB_URL`, `DB_DRIVER`, `DB_USERNAME`, `DB_PASSWORD` (defaults to in-memory H2, which loses data on restart).
+
+This single command will:
+1. Build the Vite React frontend (Nginx)
+2. Build the Spring Boot backend (Maven/Temurin)
+3. Provision the PostgreSQL database
+4. Start all three interconnected containers on port `3000` (frontend) and `8080` (backend).
+
+*Note: Environment variables for external AI tools or SMTP should be passed to the `backend` service within `docker-compose.yml` or via a `.env` file.*

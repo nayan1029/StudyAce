@@ -43,21 +43,21 @@ export default function ResetPasswordPage() {
 
   if (!token) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 p-6">
-        <div className="w-full max-w-md bg-white dark:bg-gray-900 rounded-xl p-6 shadow border border-gray-100 dark:border-gray-800 space-y-3 text-center">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-black p-6">
+        <div className="w-full max-w-md bg-white dark:bg-black rounded-xl p-6 shadow border border-gray-100 dark:border-gray-800 space-y-3 text-center">
           <h1 className="text-xl font-semibold">Invalid Link</h1>
           <p className="text-sm text-gray-600 dark:text-gray-300">
             This password reset link is missing its token. Request a new one below.
           </p>
-          <Link className="text-indigo-600 hover:underline text-sm" to="/forgot-password">Request new link</Link>
+          <Link className="text-red-600 hover:underline text-sm" to="/forgot-password">Request new link</Link>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 p-6">
-      <form onSubmit={onSubmit} className="w-full max-w-md bg-white dark:bg-gray-900 rounded-xl p-6 shadow border border-gray-100 dark:border-gray-800 space-y-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-black p-6">
+      <form onSubmit={onSubmit} className="w-full max-w-md bg-white dark:bg-black rounded-xl p-6 shadow border border-gray-100 dark:border-gray-800 space-y-4">
         <h1 className="text-xl font-semibold">Reset Password</h1>
         <Input
           label="New password"

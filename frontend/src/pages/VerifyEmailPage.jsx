@@ -27,14 +27,14 @@ export default function VerifyEmailPage() {
   }, [token])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 p-6">
-      <div className="w-full max-w-md bg-white dark:bg-gray-900 rounded-xl p-6 shadow border border-gray-100 dark:border-gray-800 space-y-3 text-center">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-black p-6">
+      <div className="w-full max-w-md bg-white dark:bg-black rounded-xl p-6 shadow border border-gray-100 dark:border-gray-800 space-y-3 text-center">
         <h1 className="text-xl font-semibold">Email Verification</h1>
         {status === 'loading' && <Loader text="Verifying your email..." />}
         {status !== 'loading' && (
           <p className={`text-sm ${status === 'error' ? 'text-red-600' : 'text-green-600'}`}>{message}</p>
         )}
-        <Link className="text-indigo-600 hover:underline text-sm inline-block" to="/dashboard">Go to dashboard</Link>
+        <Link className="text-red-600 hover:underline text-sm inline-block" to="/dashboard">Go to dashboard</Link>
       </div>
     </div>
   )

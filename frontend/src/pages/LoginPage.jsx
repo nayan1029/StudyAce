@@ -58,9 +58,9 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 p-6">
-      <form onSubmit={onSubmit} className="w-full max-w-md bg-white dark:bg-gray-900 rounded-xl p-6 shadow border border-gray-100 dark:border-gray-800 space-y-4">
-        <h1 className="text-xl font-semibold">Welcome Back</h1>
+    <div className="min-h-screen flex items-center justify-center bg-teal-50 p-6">
+      <form onSubmit={onSubmit} className="w-full max-w-md bg-white rounded-xl p-6 shadow-xl border border-teal-100 space-y-4">
+        <h1 className="text-xl font-semibold text-black">Welcome Back</h1>
         <Input 
           label="Email" 
           type="email" 
@@ -78,7 +78,7 @@ export default function LoginPage() {
           placeholder="••••••••"
         />
         <div className="text-right -mt-2">
-          <Link className="text-xs text-indigo-600 hover:underline" to="/forgot-password">Forgot password?</Link>
+          <Link className="text-xs text-red-600 hover:underline" to="/forgot-password">Forgot password?</Link>
         </div>
         {(error || googleError) && (
           <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded text-sm text-red-700 dark:text-red-400">
@@ -90,7 +90,7 @@ export default function LoginPage() {
           <span className="flex-1 h-px bg-gray-200 dark:bg-gray-800" />or<span className="flex-1 h-px bg-gray-200 dark:bg-gray-800" />
         </div>
         <GoogleAuthButton redirectTo={redirectTo} />
-        <p className="text-sm text-gray-600 dark:text-gray-300">No account? <Link className="text-indigo-600 hover:underline" to="/register">Create one</Link></p>
+        <p className="text-sm text-gray-600 dark:text-gray-300">No account? <Link className="text-red-600 hover:underline" to="/register">Create one</Link></p>
       </form>
     </div>
   )

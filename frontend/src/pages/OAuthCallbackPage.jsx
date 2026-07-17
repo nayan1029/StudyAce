@@ -18,13 +18,13 @@ export default function OAuthCallbackPage() {
       return
     }
 
-    localStorage.setItem('studybuddy_token', token)
+    localStorage.setItem('classedge_token', token)
 
     authApi.me()
       .then((user) => {
         sessionService.saveSession(user, token)
-        const redirectTo = sessionStorage.getItem('studybuddy_oauth_redirect') || '/dashboard'
-        sessionStorage.removeItem('studybuddy_oauth_redirect')
+        const redirectTo = sessionStorage.getItem('classedge_oauth_redirect') || '/dashboard'
+        sessionStorage.removeItem('classedge_oauth_redirect')
         navigate(redirectTo, { replace: true })
       })
       .catch(() => {
@@ -33,14 +33,14 @@ export default function OAuthCallbackPage() {
   }, [searchParams, navigate])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 p-6">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-black p-6">
       <div className="text-center space-y-3">
         {!error ? (
           <Loader text="Finishing sign-in..." />
         ) : (
           <>
             <p className="text-sm text-red-600">{error}</p>
-            <a href="/login" className="text-indigo-600 hover:underline text-sm">Back to login</a>
+            <a href="/login" className="text-red-600 hover:underline text-sm">Back to login</a>
           </>
         )}
       </div>

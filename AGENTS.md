@@ -1,6 +1,6 @@
-# StudyBuddy Agent Instructions
+# ClassEdge Agent Instructions
 
-StudyBuddy is a full-stack student productivity app with a React/Vite frontend and a Spring Boot backend. Use the existing project docs for feature-level detail: [README.md](README.md) and [backend/README.md](backend/README.md).
+ClassEdge is a full-stack student productivity app with a React/Vite frontend and a Spring Boot backend. Use the existing project docs for feature-level detail: [README.md](README.md) and [backend/README.md](backend/README.md).
 
 ## Working rules
 
@@ -20,7 +20,7 @@ StudyBuddy is a full-stack student productivity app with a React/Vite frontend a
 
 ## Backend conventions
 
-- Backend code lives under `backend/src/main/java/com/studybuddy/` and is organized by concern: `config`, `controller`, `dto`, `entity`, `exception`, `repository`, `security`, `service`, and `util`.
+- Backend code lives under `backend/src/main/java/com/classedge/` and is organized by concern: `config`, `controller`, `dto`, `entity`, `exception`, `repository`, `security`, `service`, and `util`.
 - The backend targets Java 21 and Spring Boot 3.3.x with Maven.
 - Prefer the existing REST, security, and WebSocket configuration patterns already present in the backend package tree.
 

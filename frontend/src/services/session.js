@@ -1,5 +1,5 @@
-const USER_STORAGE_KEY = 'studybuddy_user'
-const TOKEN_STORAGE_KEY = 'studybuddy_token'
+const USER_STORAGE_KEY = 'classedge_user'
+const TOKEN_STORAGE_KEY = 'classedge_token'
 
 function readStoredJson(key) {
   try {

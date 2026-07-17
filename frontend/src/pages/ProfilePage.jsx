@@ -11,7 +11,7 @@ export default function ProfilePage() {
       <Card title="Account Information">
         <div className="space-y-2 text-sm">
           <p><span className="text-gray-500">Name:</span> {user?.name || 'Student User'}</p>
-          <p><span className="text-gray-500">Email:</span> {user?.email || 'student@studybuddy.app'}</p>
+          <p><span className="text-gray-500">Email:</span> {user?.email || 'student@classedge.app'}</p>
           <p><span className="text-gray-500">Role:</span> {user?.role || 'STUDENT'}</p>
         </div>
       </Card>

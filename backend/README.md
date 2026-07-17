@@ -1,6 +1,6 @@
-# StudyBuddy Backend
+# ClassEdge Backend
 
-StudyBuddy backend provides secure REST APIs, JWT + Google OAuth2 authentication, core CRUD modules, analytics, and real AI-backed services (Gemini/OpenAI).
+ClassEdge backend provides secure REST APIs, JWT + Google OAuth2 authentication, core CRUD modules, analytics, and real AI-backed services (Gemini/OpenAI).
 
 ## Features
 
@@ -30,25 +30,24 @@ mvn -f backend/pom.xml clean verify
 mvn -f backend/pom.xml spring-boot:run
 ```
 
-## Deploy to Render
+## Deploy with Docker
 
-This repository includes a Render blueprint at `render.yaml` for the backend service.
+This repository includes a `Dockerfile` and `docker-compose.yml` for generic containerized deployment.
 
 ### Required environment variables
 
-- `JDBC_DATABASE_URL` or `DB_URL` with a JDBC MySQL URL such as `jdbc:mysql://HOST:3306/studybuddy?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC`
+- `DB_URL` with a JDBC PostgreSQL URL such as `jdbc:postgresql://postgres:5432/classedge`
 - `DB_USERNAME`
 - `DB_PASSWORD`
 - `JWT_SECRET`
-- `CORS_ALLOWED_ORIGINS` with your Vercel frontend URL
+- `CORS_ALLOWED_ORIGINS` with your frontend URL
 - `GEMINI_API_KEY`
 - `OPENAI_API_KEY`
 
-### Render notes
+### Docker notes
 
-- Render provides the listening port through `PORT`, which the app now respects.
-- Leave the JPA dialect unset so Hibernate can infer the database correctly.
-- Use the `backend` folder as the root directory.
+- The provided `docker-compose.yml` automatically starts a PostgreSQL database alongside the backend and frontend.
+- Spring Boot connects to the postgres service automatically.
 
 ## Environment Variables
 

@@ -23,8 +23,8 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 p-6">
-      <form onSubmit={onSubmit} className="w-full max-w-md bg-white dark:bg-gray-900 rounded-xl p-6 shadow border border-gray-100 dark:border-gray-800 space-y-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-black p-6">
+      <form onSubmit={onSubmit} className="w-full max-w-md bg-white dark:bg-black rounded-xl p-6 shadow border border-gray-100 dark:border-gray-800 space-y-4">
         <h1 className="text-xl font-semibold">Forgot Password</h1>
         <p className="text-sm text-gray-600 dark:text-gray-300">
           Enter your account email and we'll send you a link to reset your password.
@@ -46,7 +46,7 @@ export default function ForgotPasswordPage() {
           {status === 'loading' ? 'Sending...' : 'Send Reset Link'}
         </Button>
         <p className="text-sm text-gray-600 dark:text-gray-300">
-          <Link className="text-indigo-600 hover:underline" to="/login">Back to login</Link>
+          <Link className="text-red-600 hover:underline" to="/login">Back to login</Link>
         </p>
       </form>
     </div>

@@ -66,9 +66,9 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 p-6">
-      <form onSubmit={onSubmit} className="w-full max-w-md bg-white dark:bg-gray-900 rounded-xl p-6 shadow border border-gray-100 dark:border-gray-800 space-y-4">
-        <h1 className="text-xl font-semibold">Create Account</h1>
+    <div className="min-h-screen flex items-center justify-center bg-teal-50 p-6">
+      <form onSubmit={onSubmit} className="w-full max-w-md bg-white rounded-xl p-6 shadow-xl border border-teal-100 space-y-4">
+        <h1 className="text-xl font-semibold text-black">Create Account</h1>
         <Input 
           label="Full Name" 
           value={form.name} 
@@ -89,7 +89,7 @@ export default function RegisterPage() {
                 onClick={() => setForm({ ...form, role: option.value })}
                 className={`rounded-lg border px-3 py-2 text-sm font-medium transition ${
                   form.role === option.value
-                    ? 'border-indigo-500 bg-indigo-50 text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300'
+                    ? 'border-red-500 bg-red-50 text-red-700 dark:bg-red-950/40 dark:text-red-300'
                     : 'border-gray-300 text-gray-600 dark:border-gray-700 dark:text-gray-300'
                 }`}
               >
@@ -120,7 +120,7 @@ export default function RegisterPage() {
           <span className="flex-1 h-px bg-gray-200 dark:bg-gray-800" />or<span className="flex-1 h-px bg-gray-200 dark:bg-gray-800" />
         </div>
         <GoogleAuthButton label="Sign up with Google" />
-        <p className="text-sm text-gray-600 dark:text-gray-300">Already have account? <Link className="text-indigo-600 hover:underline" to="/login">Sign in</Link></p>
+        <p className="text-sm text-gray-600 dark:text-gray-300">Already have account? <Link className="text-red-600 hover:underline" to="/login">Sign in</Link></p>
       </form>
     </div>
   )

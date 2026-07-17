@@ -115,7 +115,7 @@ export default function ClassroomsPage() {
       <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
         {classrooms.map((classroom) => (
           <Link key={classroom.id} to={`/classes/${classroom.id}`}>
-            <Card title={classroom.name} className="h-full hover:ring-2 hover:ring-indigo-400 transition">
+            <Card title={classroom.name} className="h-full hover:ring-2 hover:ring-red-400 transition">
               {classroom.subject && <p className="text-sm text-gray-600 dark:text-gray-300">{classroom.subject}{classroom.section ? ` · ${classroom.section}` : ''}</p>}
               <p className="text-sm text-gray-500 mt-1">Taught by {classroom.teacherName}</p>
               <p className="text-sm text-gray-500">{classroom.memberCount} student{classroom.memberCount === 1 ? '' : 's'}</p>

@@ -20,7 +20,7 @@ const AssistantPage = lazy(() => import('../pages/AssistantPage'))
 const QuizPage = lazy(() => import('../pages/QuizPage'))
 const TasksPage = lazy(() => import('../pages/TasksPage'))
 const TimetablePage = lazy(() => import('../pages/TimetablePage'))
-const StudyRoomsPage = lazy(() => import('../pages/StudyRoomsPage'))
+
 const ResumeAnalyzerPage = lazy(() => import('../pages/ResumeAnalyzerPage'))
 const ProfilePage = lazy(() => import('../pages/ProfilePage'))
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'))
@@ -56,7 +56,7 @@ export default function AppRoutes() {
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="/tasks" element={<TasksPage />} />
           <Route path="/timetable" element={<TimetablePage />} />
-          <Route path="/rooms" element={<StudyRoomsPage />} />
+
           <Route path="/resume" element={<ResumeAnalyzerPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Route>

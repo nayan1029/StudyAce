@@ -10,12 +10,12 @@ export default function Input({ label, error, className = '', type, showPassword
 
   return (
     <div className="space-y-1">
-      {label && <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">{label}</label>}
+      {label && <label className="block text-sm font-medium text-black">{label}</label>}
       <div className="relative">
         <input
           {...props}
           type={inputType}
-          className={`w-full px-3 py-2 rounded-lg border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 ${isPassword ? 'pr-10' : ''} ${className}`}
+          className={`w-full px-3 py-2 rounded-lg border border-teal-200 bg-white text-black focus:outline-none focus:ring-2 focus:ring-teal-500 ${isPassword ? 'pr-10' : ''} ${className}`}
         />
         {isPassword && (
           <button

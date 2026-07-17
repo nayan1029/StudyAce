@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 const ThemeContext = createContext(null)
-const THEME_STORAGE_KEY = 'studybuddy_theme'
+const THEME_STORAGE_KEY = 'classedge_theme'
 
 function readStoredTheme() {
   try {

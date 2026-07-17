@@ -27,7 +27,7 @@ export default function ChatMarkdown({ content }) {
             }
             const language = /language-(\w+)/.exec(className || '')?.[1]
             return (
-              <div className="my-2 overflow-x-auto rounded-lg bg-gray-900 text-gray-100">
+              <div className="my-2 overflow-x-auto rounded-lg bg-black text-gray-100">
                 {language && (
                   <div className="px-3 py-1 text-[10px] uppercase tracking-wide text-gray-400 border-b border-white/10">
                     {language}

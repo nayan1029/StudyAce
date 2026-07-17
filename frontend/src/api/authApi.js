@@ -34,7 +34,7 @@ export const authApi = {
 	googleLoginUrl: (redirectTo = '/dashboard') => {
 		const base = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api').replace(/\/api\/?$/, '')
 		const target = redirectTo && redirectTo.startsWith('/') ? redirectTo : '/dashboard'
-		sessionStorage.setItem('studybuddy_oauth_redirect', target)
+		sessionStorage.setItem('classedge_oauth_redirect', target)
 		return `${base}/oauth2/authorization/google`
 	},
 }

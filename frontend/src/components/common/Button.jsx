@@ -9,7 +9,7 @@ export default function Button({
   disabled = false,
 }) {
   const variants = {
-    primary: 'bg-indigo-600 hover:bg-indigo-700 text-white',
+    primary: 'bg-red-600 hover:bg-red-700 text-white',
     secondary: 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50',
     danger: 'bg-red-600 hover:bg-red-700 text-white',
   }

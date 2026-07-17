@@ -25,7 +25,7 @@ export default function AssistantPage() {
   const [messages, setMessages] = useState([
     createMessage(
       'assistant',
-      'Hi, I am your StudyBuddy assistant. Ask me to explain a topic, create a revision plan, or quiz you on a subject.'
+      'Hi, I am your ClassEdge assistant. Ask me to explain a topic, create a revision plan, or quiz you on a subject.'
     ),
   ])
   const [isStreaming, setIsStreaming] = useState(false)
@@ -131,14 +131,14 @@ export default function AssistantPage() {
                   key={prompt}
                   type="button"
                   onClick={() => handleQuickPrompt(prompt)}
-                  className="rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-3 py-2 text-left text-xs text-gray-700 dark:text-gray-200 hover:border-indigo-300 hover:text-indigo-600 transition"
+                  className="rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-3 py-2 text-left text-xs text-gray-700 dark:text-gray-200 hover:border-red-300 hover:text-red-600 transition"
                 >
                   {prompt}
                 </button>
               ))}
             </div>
 
-            <div className="rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/60 p-4 text-sm text-indigo-900 dark:text-indigo-100">
+            <div className="rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900/60 p-4 text-sm text-red-900 dark:text-red-100">
               <p className="font-semibold mb-1">How it works</p>
               <p>
                 Replies stream in live, like a real chatbot. Connect a Gemini or OpenAI key on the backend
@@ -148,7 +148,7 @@ export default function AssistantPage() {
           </div>
         </Card>
 
-        <Card title="Chat with StudyBuddy" className="flex h-[70vh] flex-col overflow-hidden">
+        <Card title="Chat with ClassEdge" className="flex h-[70vh] flex-col overflow-hidden">
           <div className="flex-1 space-y-4 overflow-y-auto pr-2">
             {messages.map((message) => (
               <div
@@ -158,7 +158,7 @@ export default function AssistantPage() {
                 <div
                   className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm shadow-sm ${
                     message.role === 'user'
-                      ? 'bg-indigo-600 text-white rounded-br-md'
+                      ? 'bg-red-600 text-white rounded-br-md'
                       : 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100 rounded-bl-md'
                   }`}
                 >
@@ -184,7 +184,7 @@ export default function AssistantPage() {
               Ask your next study question
             </label>
             <textarea
-              className="w-full min-h-28 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+              className="w-full min-h-28 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-black outline-none transition placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
               value={question}
               onChange={(event) => setQuestion(event.target.value)}
               onKeyDown={handleKeyDown}
